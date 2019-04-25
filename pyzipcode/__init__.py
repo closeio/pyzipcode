@@ -1,4 +1,4 @@
-from settings import db_location
+from .settings import db_location
 try:
     import sqlite3
 except ImportError:
@@ -23,7 +23,7 @@ class ConnectionManager(object):
         # then just give up...
             try:
                 conn = sqlite3.connect(db_location)
-            except sqlite3.OperationalError, x:
+            except sqlite3.OperationalError:
                 retry_count += 1
                 time.sleep(0.001)
 
